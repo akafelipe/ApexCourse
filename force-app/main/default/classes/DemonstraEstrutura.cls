@@ -43,13 +43,13 @@ Classe que demonstra estrutura para nossa aula
         Date today = system.Today();
         system.debug('hoje: ' +today);
 
-        DateTime DataHora = system.Now();
+        DateTime dataHora = system.Now();
         system.debug('hoje + data: ' +DataHora);
         
         Integer diasAsomar = 7;
 
-        DataHora = DataHora.addDays(diasAsomar);
-        system.debug('Dia e hora daqui a '+diasAsomar+'dias e' +DataHora);
+        dataHora = dataHora.addDays(diasAsomar);
+        system.debug('Dia e hora daqui a '+diasAsomar+'dias e' +dataHora);
 
         Id idValido = '001D000000I8mUOIAZ';
 
@@ -165,4 +165,104 @@ Classe que demonstra estrutura para nossa aula
         system.debug('Retornar o 0 registro do exemploMap: ' +exemploMap2.get('F'));
 
     }
+
+    public static void condicionais(){
+
+        //CONDICIONAIS
+        //IF == Se
+        Integer num = 5;
+
+        if(num > 2){
+            system.debug('Maior que 2');
+        }
+
+        //ELSE IF + ELSE
+        Integer idade = 25;
+
+        if(idade < 18){
+            system.debug('Crianca');           
+        }else if(idade >= 18 && idade < 30){
+            system.debug('Jovem');
+        }else{
+            system.debug('Senior');
+        }
+
+        //TERNARIO DA CONDICAO ACIMA
+        String textoIdade = idade < 18 ? 'crianca' : (idade>=18 && idade < 30 ? 'jovem' : (idade > 60 ? 'adulto' : 'adulto'));
+        system.debug(textoIdade);
+
+        //CONDICIONAIS
+        //SWITCH
+        //0-Dom, 1-Seg...6-Sab
+        Integer dayWeek = 3;
+
+        switch on dayWeek {
+            when 0 {
+                system.debug('Domingo');
+            }
+            when 1 {
+                system.debug('Segunda');   
+            }
+            when else {
+                system.debug('Dia Invalido');
+            }
+        }
+
+        //CONDICIONAIS
+        //IF TERNARIO
+        Integer num = 30;
+        String result = num > 5 ? 'Num maior que 5' : 'Num menor ou igual a 5';
+    }
+
+    public static void loops(){
+        //FOR
+        for(Integer i = 0; i < 10; i++){
+            system.debug('Executou o For com o numero' +i);
+        }
+
+        //WHILE
+        Integer count = 1;
+        while (count <= 10) {
+            system.debug('Count e:' +count);
+            count++;     
+        }
+
+        //DO-WHILE
+        Integer counter = 0;
+        do {
+            system.debug('O valor do counter eh: '+counter);
+            counter++;
+        } while (counter < 5);
+
+        //FOREACH
+        for(Account acc : [SELECT Name FROM Account]){
+            system.debug ('O nome da conta: '+acc.Name);
+        }
+
+        List<Integer> integerList = new List<Integer>{1,2,3,4,5,6,7,8,9};
+        for(Integer num : integerList){
+            system.debug ('Valor de num: ' +num);
+        }
+    }
+
+    //OPERADORES
+    public static void operadores(){
+        //ARITMETICOS
+        //+ - * / %
+
+        //ATRIBUICAO
+        // =
+
+        //COMPARACAO
+        // == != < > <= >=
+
+        //LOGICOS
+        // && || !
+
+        //CONDICIONAIS
+        // ? :
+    }
+
+    //OPERADORES DE ATRIBUICAO
+    // = += -= *= /= %=
 }  

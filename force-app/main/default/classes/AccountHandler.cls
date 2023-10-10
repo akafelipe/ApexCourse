@@ -20,10 +20,15 @@ public with sharing class AccountHandler {
             // Iterar sobre as contas recém-inseridas e verificar se seus nomes já existem
             for(Account acc : newAccounts){
                 for(Account existingAcc : accountWithSameName){
-                    if (acc.Name = existingAcc.Name){
+                    if (acc.Name == existingAcc.Name){
                         acc.Name.addError('Name already used');
                     }
                 }
             }                
+        }
+
+        //previne o usuario de entrar CEP incorreto, apenas numer
+        public static void checkShipZipCode (List<Account> ShipZipCode){
+
         }
 }
