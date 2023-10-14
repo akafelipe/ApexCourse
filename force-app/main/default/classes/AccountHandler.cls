@@ -7,7 +7,6 @@ Felipe Siqueira
     AccountHandler.ShipZipCode(List<Account> shipZipCode)
     Impedir o usuario de entrar CEP incorreto, obrigatoriamente 8 digitos.
 */
-
 public with sharing class AccountHandler {
 
         //previne o usuario de criar uma nova conta o mesmo nome
