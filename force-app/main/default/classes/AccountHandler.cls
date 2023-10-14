@@ -1,7 +1,11 @@
 /*
 CLASS Description: AccountHandler holds methods in the Account Object.
-    AccountHandler.preventAccNameDuplication ()
-     * Description: Impedir o usuário de inserir uma conta com nome que já existe!
+Felipe Siqueira
+    AccountHandler.preventAccNameDuplication (List<Account> newAccounts) 
+    Impedir o usuário de inserir uma conta com nome que já existe.
+
+    AccountHandler.ShipZipCode(List<Account> shipZipCode)
+    Impedir o usuario de entrar CEP incorreto, obrigatoriamente 8 digitos.
 */
 
 
@@ -27,8 +31,14 @@ public with sharing class AccountHandler {
             }                
         }
 
-        //previne o usuario de entrar CEP incorreto, apenas numer
-        public static void checkShipZipCode (List<Account> ShipZipCode){
-
+        //previne o usuario de entrar CEP incorreto, obrigatoriamente 8 digitos
+        public static void checkBillAndShipZipCode (List<Account> shipZipCode){
+            //Iterar em todos os newShip
+            for (Account acc : shipZipCode) {
+                //Verifica se o ShippingPostalCode contem 8 digitos se eh numerico e se 
+                if(acc.ShippingPostalCode.length() != 8 || !acc.ShippingPostalCode.isNumeric() || String.isEmpty(acc.ShippingPostalCode)){
+                    acc.ShippingPostalCode.addError('Must be 8 numbers');   
+                }               
+            }
         }
 }

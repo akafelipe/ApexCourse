@@ -210,8 +210,8 @@ Classe que demonstra estrutura para nossa aula
 
         //CONDICIONAIS
         //IF TERNARIO
-        Integer num = 30;
-        String result = num > 5 ? 'Num maior que 5' : 'Num menor ou igual a 5';
+        Integer numm = 30;
+        String result = numm > 5 ? 'Num maior que 5' : 'Num menor ou igual a 5';
     }
 
     public static void loops(){
@@ -265,4 +265,36 @@ Classe que demonstra estrutura para nossa aula
 
     //OPERADORES DE ATRIBUICAO
     // = += -= *= /= %=
-}  
+
+    //FUNCOES E METODOS
+  
+    //FUNCAO 
+    /*
+    modificador de acesso (public ou private) 
+    tipo de retorno (double, integer, string ou void)
+    nome da funcao(parametros da funcao){
+        corpo da funcao(logica da funcao)
+        return (caso nao seja void)
+    }
+    */
+    public static Double calcAverage(List<Double> numbers){
+        Double sum = 0;
+        for(Double num : numbers){
+            sum += num;
+        }
+        return sum/numbers.size();
+    }
+
+
+    //DESAFIO 
+    /*
+    Fazer uma funcao que recebe dois inteiros
+    e retorna a soma.
+    */
+    
+    public static Integer calcSoma(Integer a, Integer b){
+        Integer calc = 0;
+        return calc = a + b;
+    }
+}
+  
