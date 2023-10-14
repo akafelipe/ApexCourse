@@ -8,7 +8,6 @@ Felipe Siqueira
     Impedir o usuario de entrar CEP incorreto, obrigatoriamente 8 digitos.
 */
 
-
 public with sharing class AccountHandler {
 
         //previne o usuario de criar uma nova conta o mesmo nome
@@ -32,12 +31,16 @@ public with sharing class AccountHandler {
         }
 
         //previne o usuario de entrar CEP incorreto, obrigatoriamente 8 digitos
-        public static void checkBillAndShipZipCode (List<Account> shipZipCode){
+        public static void checkPostalCode (List<Account> shipZipCode){
             //Iterar em todos os newShip
+            
             for (Account acc : shipZipCode) {
                 //Verifica se o ShippingPostalCode contem 8 digitos se eh numerico e se 
                 if(acc.ShippingPostalCode.length() != 8 || !acc.ShippingPostalCode.isNumeric() || String.isEmpty(acc.ShippingPostalCode)){
                     acc.ShippingPostalCode.addError('Must be 8 numbers');   
+                }else{
+                    //BillingPostalCode recebe ShippingPostalCode
+                    acc.BillingPostalCode = acc.ShippingPostalCode;    
                 }               
             }
         }

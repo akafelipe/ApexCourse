@@ -7,7 +7,9 @@ private class AccountHandlerTest {
         insert acc;
 
         //Preencher list que ira ser testado
-        List<Account> newAccounts = new List<Account>{acc};
+        // Crie uma nova conta com o mesmo nome
+        Account newAccount = new Account(Name = 'Existing Account');
+        List<Account> newAccounts = new List<Account>{ newAccount };
 
         //Executar metodo
         Test.startTest();
@@ -15,7 +17,8 @@ private class AccountHandlerTest {
         Test.stopTest();
 
         //Verifica teste
-        System.assertEquals('ExistingAccount', newAccounts[0].Name);
+        // Verifique se o erro foi adicionado à nova conta
+        System.assertEquals('Existing Account', newAccounts[0].Name());
 
 
 

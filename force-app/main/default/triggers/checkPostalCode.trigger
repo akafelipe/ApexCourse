@@ -5,8 +5,8 @@
  * Create Date: 10 de Outubro de 2023
  */
 
-trigger BillAndShipZipCode on Account (before insert) {
+trigger checkPostalCode on Account (before insert) {
 
-    AccountHandler.checkBillAndShipZipCode(Trigger.new);
+    AccountHandler.checkPostalCode(Trigger.new);
 
 }
