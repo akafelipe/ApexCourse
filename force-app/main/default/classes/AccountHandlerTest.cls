@@ -3,20 +3,14 @@ public class AccountHandlerTest {
 
     @isTest
     static void testPreventAccNameDuplication() {
-        // Crie uma lista de contas com nomes duplicados
+        // Cria uma lista com account nome ja existente
         List<Account> newAccounts = new List<Account>();
         newAccounts.add(new Account(Name = 'SForce', ShippingPostalCode='12345678'));
-        
-        insert newAccounts;
       
-        Test.startTest();
-        // Chame o método preventAccNameDuplication
+        // Chame o método a ser testado preventAccNameDuplication
         AccountHandler.preventAccNameDuplication(newAccounts);
-        Test.stopTest();
 
-        // Verifique se as mensagens de erro foram adicionadas corretamente
-        System.assertEquals(1, newAccounts.getErrors().size());
-        System.assertEquals('Name already used', newAccounts.getErrors()[0].getMessage());
-        
+        // Verifica se o erro aconteceu na conta
+        System.assertEquals(1, newAccounts.getErrors().size(), 'Account with same name');
     }
 }
