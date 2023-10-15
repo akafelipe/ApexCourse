@@ -1,20 +1,26 @@
 @isTest
-private class AccountHandlerTest {
-    @isTest static void testExistingAccount() {
-        //instanciar uma acc para ser comparada no teste
-        Account acc  = new Account(Name = 'ExistingAccount', ShippingPostalCode = 12345678);
-        //inserir acc de comparacao
-        insert acc;
+public class AccountHandlerTest {
 
-        //Preencher list que ira ser testado
-        // Crie uma nova conta com o mesmo nome
-        Account newAccount = new Account(Name = 'ExistingAccount');
+    @isTest
+    static void testPreventAccNameDuplication() {
+        // Crie uma lista de contas com nomes duplicados
+        List<Account> newAccounts = new List<Account>();
+        newAccounts.add(new Account(Name = 'SForce', ShippingPostalCode='12345678'));
+        
+        for(Account acc : newAccounts){
+            insert acc;
+        }
 
-        //Verifica teste
-        // Verifique se o erro foi adicionado à nova conta
-        System.assertEquals(newAccount.Name, acc.Name);
+        Test.startTest();
+        // Chame o método preventAccNameDuplication
+        AccountHandler.preventAccNameDuplication(newAccounts);
+        AccountHandler.checkBillAndShipZipCode(newAccounts);
+        Test.stopTest();
 
-
-
+        // Verifique se as mensagens de erro foram adicionadas corretamente
+        System.assertEquals(1, newAccounts.getErrors().size());
+        System.assertEquals('Name already used', newAccounts.getErrors()[0].getMessage());
+        
     }
+
 }
