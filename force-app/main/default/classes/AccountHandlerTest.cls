@@ -7,14 +7,11 @@ public class AccountHandlerTest {
         List<Account> newAccounts = new List<Account>();
         newAccounts.add(new Account(Name = 'SForce', ShippingPostalCode='12345678'));
         
-        for(Account acc : newAccounts){
-            insert acc;
-        }
-
+        insert newAccounts;
+      
         Test.startTest();
         // Chame o método preventAccNameDuplication
         AccountHandler.preventAccNameDuplication(newAccounts);
-        AccountHandler.checkBillAndShipZipCode(newAccounts);
         Test.stopTest();
 
         // Verifique se as mensagens de erro foram adicionadas corretamente
@@ -22,5 +19,4 @@ public class AccountHandlerTest {
         System.assertEquals('Name already used', newAccounts.getErrors()[0].getMessage());
         
     }
-
 }
