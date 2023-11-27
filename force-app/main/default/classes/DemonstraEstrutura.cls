@@ -296,5 +296,10 @@ Classe que demonstra estrutura para nossa aula
         Integer calc = 0;
         return calc = a + b;
     }
+
+    public static List<Contact> getContacts(String name){
+        List<Contact> contactList = [SELECT Id, FirstName, LastName, Email FROM Contact WHERE FirstName = :name];
+        return contactList;
+    }    
 }
   
